@@ -41,12 +41,28 @@ function displayBook() {
             <p><strong>Author:</strong>${book.author}</p>
             <p><strong>Pages:</strong>${book.pages}</p>
             <p><strong>Status:</strong>${book.read}</p>
+            <button class="remove-book" data-id="${book.id}">Remove</button>
         `
 
         container.appendChild(card);
     })
+
+    document.querySelectorAll('.remove-book').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const id = this.getAttribute('data-id');
+        removeBookFromLibrary(id);
+        displayBook();
+    });
+    });
 }
 displayBook();
+
+function removeBookFromLibrary(id) {
+    const index = myLibrary.findIndex(book => book.id === id);
+    if (index !== -1) {
+        myLibrary.splice(index, 1);
+    }
+}
 
 //===================
 document.querySelector('.add-book').addEventListener('click', () => {
