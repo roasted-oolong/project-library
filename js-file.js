@@ -17,9 +17,9 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(title, author, pages, read) {
-    // take params, create a book then store it in the array
-    //All books should have a unique ID
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet')
-console.log(theHobbit.info());
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet')
+console.log(myLibrary)
