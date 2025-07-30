@@ -4,7 +4,7 @@ p.style.cssText = "color: blue";
 document.body.appendChild(p);
 
 const myLibrary = [
-    newBook('The Hobbit', 'J.R.R. Tolkien', 295, 'unread')
+
 ];
 function Book(title, author, pages, read) {
     if (!new.target) {
@@ -23,7 +23,9 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'not read yet')
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'unread')
+addBookToLibrary('Lord of the Rings', 'J.R.R. Tolkien', 295, 'unread')
+addBookToLibrary('Harry Potter', 'J.K. Rowling', 295, 'read')
 console.log(myLibrary)
 
 function displayBook() {
@@ -35,12 +37,13 @@ function displayBook() {
         card.classList.add('book-card')
         
         card.innerHTML = `
-            <h3>${newBook.tile}</h3>
-            <p><strong>Author:</strong>${newBook.author}</p>
+            <h3>${book.title}</h3>
+            <p><strong>Author:</strong>${book.author}</p>
             <p><strong>Pages:</strong>${book.pages}</p>
             <p><strong>Status:</strong>${book.read}</p>
         `
 
-        document.appendChild(card);
+        container.appendChild(card);
     })
 }
+displayBook();
