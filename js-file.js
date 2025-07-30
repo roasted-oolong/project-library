@@ -18,6 +18,10 @@ function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
 }
 
+Book.prototype.toggleReadStatus = function() {
+    this.read = this.read === 'read' ? 'unread' : 'read';
+}
+
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
@@ -69,7 +73,7 @@ displayBook();
 function toggleReadStatus(id) {
     const book = myLibrary.find(book => book.id === id);
     if (book) {
-        book.read = book.read === 'read' ? 'unread' : 'read';
+        book.toggleReadStatus();
     }
 }
 
