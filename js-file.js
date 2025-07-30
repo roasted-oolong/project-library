@@ -42,20 +42,36 @@ function displayBook() {
             <p><strong>Pages:</strong>${book.pages}</p>
             <p><strong>Status:</strong>${book.read}</p>
             <button class="remove-book" data-id="${book.id}">Remove</button>
+            <button class="toggle-read" data-id="${book.id}">Toggle Read Status</button>
         `
 
         container.appendChild(card);
     })
 
     document.querySelectorAll('.remove-book').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const id = this.getAttribute('data-id');
-        removeBookFromLibrary(id);
-        displayBook();
+        btn.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            removeBookFromLibrary(id);
+            displayBook();
+        });
     });
+
+    document.querySelectorAll('.toggle-read').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            toggleReadStatus(id);
+            displayBook();
+        });
     });
 }
 displayBook();
+
+function toggleReadStatus(id) {
+    const book = myLibrary.find(book => book.id === id);
+    if (book) {
+        book.read = book.read === 'read' ? 'unread' : 'read';
+    }
+}
 
 function removeBookFromLibrary(id) {
     const index = myLibrary.findIndex(book => book.id === id);
