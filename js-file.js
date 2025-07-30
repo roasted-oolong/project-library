@@ -13,9 +13,10 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = crypto.randomUUID();
 }
 
-function addBookToLibrary(book) {
+function addBookToLibrary(title, author, pages, read) {
     // take params, create a book then store it in the array
     //All books should have a unique ID
 }
